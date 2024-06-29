@@ -31,7 +31,7 @@ public class LionParameterizedTests {
         this.hasMane = hasMane;
     }
 
-    @Parameterized.Parameters(name = "Класс Lion. Пол: {0}")
+    @Parameterized.Parameters(name = "{0}")
     public static Object[][] setSexForLion() {
         return new Object[][] {
                 {"Самец", true},
@@ -42,7 +42,7 @@ public class LionParameterizedTests {
     @Test
     public void doesHaveManeIsCorrect() throws Exception {
         MatcherAssert.assertThat("Грива есть только у льва",
-                new Lion(this.sex).doesHaveMane(),
+                new Lion(feline, this.sex).doesHaveMane(),
                 equalTo(hasMane)
         );
 

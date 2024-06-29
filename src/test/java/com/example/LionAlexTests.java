@@ -1,5 +1,6 @@
 package com.example;
 
+import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,8 +9,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-
 @RunWith(MockitoJUnitRunner.class)
 public class LionAlexTests {
 
@@ -17,18 +16,18 @@ public class LionAlexTests {
     Feline feline;
 
     @Test
-    public void getKittensIsAlwaysZero() throws Exception{
-        MatcherAssert.assertThat("У льва Алекса не может быть котят",
+    public void getKittensIsZero() throws Exception{
+        MatcherAssert.assertThat("У Алекса нет котят",
                 new LionAlex(feline).getKittens(),
-                equalTo(0)
+                CoreMatchers.equalTo(0)
         );
     }
 
     @Test
     public void getPlaceOfLivingIsCorrect() throws Exception {
-        MatcherAssert.assertThat("Лев Алекс живёт не там",
+        MatcherAssert.assertThat("Алекс живёт в Нью-Йоркском зоопарке",
                 new LionAlex(feline).getPlaceOfLiving(),
-                equalTo("Нью-Йоркский зоопарк")
+                CoreMatchers.equalTo("Нью-Йоркский зоопарк")
         );
     }
 
@@ -41,7 +40,7 @@ public class LionAlexTests {
         );
         MatcherAssert.assertThat("Неправильный список друзей",
                 new LionAlex(feline).getFriends(),
-                equalTo(expectedList)
+                CoreMatchers.equalTo(expectedList)
         );
     }
 }
