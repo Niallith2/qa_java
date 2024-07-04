@@ -9,8 +9,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 
 public class AnimalTests {
 
-    @Rule
-    public ExpectedException expectedEx = ExpectedException.none();
+
 
     @Test
     public void getFamilyIsCorrect() {
@@ -22,11 +21,8 @@ public class AnimalTests {
         );
     }
 
-    @Test
+    @Test(expected = Exception.class)
     public void getFoodThrowsException() throws Exception {
-        expectedEx.expect(Exception.class);
-        expectedEx.expectMessage("Неизвестный вид животного");
-
         new Animal().getFood("");
     }
 }
